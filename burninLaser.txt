@@ -1,0 +1,36 @@
+/*
+Runs a solenoid finger that controls a fire button on Xeo display.
+ 
+ This example code is in the public domain.
+ */
+
+// Pin 13 has an LED connected on most Arduino boards.
+// give it a name:
+int led = 10;  // Will turn on transistor to activate solenoid.
+
+// the setup routine runs once when you press reset:
+void setup() {                
+  // initialize the digital pin as an output.
+  pinMode(led, OUTPUT);     
+}
+
+// Variable i is number of seconds to run. 900 from 60 sec times 15 minutes.
+void loop() {
+  digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(2000);               // wait for a second
+  digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
+  
+  for(int i = 0; i < 1800; i++) // Xeo supply on for 30 min.
+  {
+    delay(1000);               // wait for a second
+  }
+  
+  digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(2000);               // wait for a second
+  digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
+  
+  for(int i = 0; i < 900; i++) // Xeo supply off for 15 min.
+  {
+    delay(1000);               // wait for a second
+  }
+}
